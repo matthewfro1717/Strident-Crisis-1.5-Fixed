@@ -17,7 +17,7 @@ class DiscordClient
     {
         trace("Discord Client starting...");
         DiscordRpc.start({
-            clientID: "921741520388911125",
+            clientID: "1058071373290934313",
             onReady: onReady,
             onError: onError,
             onDisconnected: onDisconnected
@@ -45,7 +45,7 @@ class DiscordClient
             details: "In the Menus",
             state: null,
             largeImageKey: 'icon',
-            largeImageText: "VS Bambi: Strident Crisis"
+            largeImageText: "VS Bambi: Strident Crisis 1.5 - Fixed Build"
         });
     }
 

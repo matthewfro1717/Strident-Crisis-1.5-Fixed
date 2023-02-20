@@ -145,7 +145,10 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 
-		switch (FlxG.random.int(1, 6))
+		switch (
+		//FlxG.random.int(1, 6)
+		4
+		)
 		{
 			case 1:
 				char = new FlxSprite(100, 270).loadGraphic(Paths.image('mainmenu/bambiRemake'));//put your cords and image here
@@ -175,12 +178,12 @@ class MainMenuState extends MusicBeatState
 				add(char);
 
 				case 4:
-					char = new FlxSprite(100, 140).loadGraphic(Paths.image('mainmenu/OppositionX_Assets'));//put your cords and image here
-					char.frames = Paths.getSparrowAtlas('mainmenu/OppositionX_Assets');//here put the name of the xml
-					char.animation.addByPrefix('idleR', 'Idle', 24, true);//on 'idle normal' change it to your xml one
+					char = new FlxSprite(-100, 0).loadGraphic(Paths.image('mainmenu/Hell_Breaker'));//put your cords and image here
+					char.frames = Paths.getSparrowAtlas('mainmenu/Hell_Breaker');//here put the name of the xml
+					char.animation.addByPrefix('idleR', 'Hade Idle', 24, true);//on 'idle normal' change it to your xml one
 					char.animation.play('idleR');//you can rename the anim however you want to
 					char.scrollFactor.set();
-					char.scale.set(1.5, 1.5);
+					char.scale.set(0.7, 0.7);
 					char.antialiasing = ClientPrefs.globalAntialiasing;
 					add(char);
 

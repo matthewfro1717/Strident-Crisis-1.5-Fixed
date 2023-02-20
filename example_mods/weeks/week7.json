@@ -1,48 +1,30 @@
 {
 	"songs": [
 		[
-			"Faker",
-			"faker",
+			"Homies",
+			"face",
 			[
-				75,
-				0,
-				0
-			]
-		],
-		[
-			"Divinity",
-			"faker",
-			[
-				26,
-				26,
-				26
-			]
-		],
-		[
-			"Incinerate",
-			"oppx",
-			[
-				26,
-				26,
-				26
+				255,
+				255,
+				255
 			]
 		]
 	],
 	"hideFreeplay": false,
-	"weekBackground": "faking",
+	"weekBackground": "",
 	"weekCharacters": [
 		"",
 		"",
 		""
 	],
-	"storyName": "...",
-	"weekName": "Faker",
+	"storyName": "WOaghers Dev Team SOng",
+	"weekName": "devs",
 	"freeplayColor": [
 		146,
 		113,
 		253
 	],
 	"hideStoryMode": false,
-	"weekBefore": "tutorial",
+	"weekBefore": "",
 	"startUnlocked": true
 }
