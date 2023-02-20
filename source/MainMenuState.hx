@@ -145,10 +145,7 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 
-		switch (
-		//FlxG.random.int(1, 6)
-		4
-		)
+		switch (FlxG.random.int(1, 6))
 		{
 			case 1:
 				char = new FlxSprite(100, 270).loadGraphic(Paths.image('mainmenu/bambiRemake'));//put your cords and image here
