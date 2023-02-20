@@ -2310,9 +2310,9 @@
 		"screwYou": "Fuck you! ",
 		"event7Value": "Opposition-alpha2",
 		"bpm": 120,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": true,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "Opposition",
 		"disableGhostTapping": null,
 		"credit": "Maevings"

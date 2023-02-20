@@ -1759,9 +1759,9 @@
 		"screwYou": "Screw you! Ghost tapping is forced off!",
 		"event7Value": null,
 		"bpm": 300,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": false,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "Unfairness",
 		"disableGhostTapping": true,
 		"credit": "MoldyGH"

@@ -5354,9 +5354,9 @@
 		"screwYou": "Screw you! You're fucked lol!",
 		"event7Value": null,
 		"bpm": 120,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": false,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "Opposition",
 		"credit": "Maevings"
 	}

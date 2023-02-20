@@ -1089,7 +1089,7 @@
 		"splashSkin": null,
 		"validScore": false,
 		"bpm": 125,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": true,
 		"song": "Cheeting"
 	}

@@ -6182,7 +6182,7 @@
 		"validScore": true,
 		"needsVoices": true,
 		"stage": "mac",
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"bpm": 240,
 		"speed": 3.2,
 		"arrowPlayerSkin": ""

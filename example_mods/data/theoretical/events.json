@@ -1478,9 +1478,9 @@
 		"screwYou": "YOU BITCH!",
 		"event7Value": null,
 		"bpm": 150,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": true,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "Theoretical",
 		"disableGhostTapping": false,
 		"credit": "Hortas"

@@ -30802,7 +30802,7 @@
 		"validScore": true,
 		"needsVoices": true,
 		"stage": "yoyleworld",
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"bpm": 120,
 		"speed": 3.7,
 		"arrowPlayerSkin": ""

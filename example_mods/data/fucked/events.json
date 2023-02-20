@@ -1408,9 +1408,9 @@
 		"screwYou": "oiahfiujbdehfgieugjhewughewugh",
 		"event7Value": "When",
 		"bpm": 135,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": true,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "fucked",
 		"disableGhostTapping": null,
 		"credit": "Joolian"

@@ -35,7 +35,7 @@
 		],
 		[
 			"Opposition",
-			"oppoexpunged",
+			"OppoRxpunged",
 			[
 				255,
 				255,
@@ -44,7 +44,7 @@
 		],
 		[
 			"Thearchy",
-			"thearexpunged",
+			"ThearExpunged",
 			[
 				255,
 				255,
@@ -53,7 +53,7 @@
 		],
 		[
 			"Transcendent",
-			"thearexpunged",
+			"ThearExpunged",
 			[
 				255,
 				255,

@@ -10720,7 +10720,7 @@
 		"event7Value": null,
 		"event7": "Go to Song",
 		"song": "thearchy",
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"stage": "yoyleworld",
 		"needsVoices": true,
 		"validScore": true,

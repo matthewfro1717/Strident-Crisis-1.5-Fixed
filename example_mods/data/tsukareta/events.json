@@ -1041,9 +1041,9 @@
 		"screwYou": "JUST STOP ALREADY!!",
 		"event7Value": null,
 		"bpm": 140,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": false,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "Tsukareta",
 		"disableGhostTapping": null,
 		"credit": "Maevings"

@@ -2337,9 +2337,9 @@
 		"screwYou": "I HOPE YOU CAN HANDLE THIS!!!",
 		"event7Value": null,
 		"bpm": 120,
-		"arrowSkin": "NOTE_assets_3d",
+		"arrowSkin": "NOTE_assets_3D",
 		"needsVoices": true,
-		"arrowPlayerSkin": "NOTE_assets_3d",
+		"arrowPlayerSkin": "NOTE_assets_3D",
 		"song": "Transcendent",
 		"disableGhostTapping": null,
 		"credit": "Joolian"
