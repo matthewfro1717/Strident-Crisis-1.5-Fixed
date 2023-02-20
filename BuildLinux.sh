@@ -1,0 +1,1 @@
+haxelib run lime build Project.xml linux --app-version="4.0.0"

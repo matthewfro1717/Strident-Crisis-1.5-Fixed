@@ -327,7 +327,7 @@ class PlayState extends MusicBeatState
 
 	var wavyBGs:Array<String> = [];
 
-	public static var screenshader:Shaders.PulseEffect = new PulseEffect();
+
 
 	var upperBoppers:BGSprite;
 	var bottomBoppers:BGSprite;
@@ -465,11 +465,6 @@ class PlayState extends MusicBeatState
 		the3DWorldEffectWavy.waveFrequency = 3;
 		the3DWorldEffectWavy.waveSpeed = 1.25;
 
-		screenshader.waveAmplitude = 1;
-		screenshader.waveFrequency = 2;
-		screenshader.waveSpeed = 1;
-		screenshader.shader.uTime.value[0] = new flixel.math.FlxRandom().float(-100000, 100000);
-		screenshader.shader.uampmul.value[0] = 0;
 
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -2458,13 +2453,6 @@ class PlayState extends MusicBeatState
 		
 
 
-		FlxG.camera.setFilters([new ShaderFilter(screenshader.shader)]);
-		screenshader.update(elapsed);
-		if(disableTheTripper)
-			{
-				screenshader.shader.uampmul.value[0] -= (elapsed / 2);
-			}
-		
 		/*if (FlxG.keys.justPressed.NINE)
 		{
 			iconP1.swapOldIcon();
@@ -3573,20 +3561,6 @@ Lib.application.window.resize(width, height);*/
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 
-				case 'Rainbow Eyesore':
-					if(ClientPrefs.eyesores) {
-						var timeRainbow:Int = Std.parseInt(value1);
-						var speedRainbow:Float = Std.parseFloat(value2);
-						disableTheTripper = false;
-						disableTheTripperAt = timeRainbow;
-						FlxG.camera.setFilters([new ShaderFilter(screenshader.shader)]);
-						screenshader.waveAmplitude = 1;
-						screenshader.waveFrequency = 2;
-						screenshader.waveSpeed = speedRainbow;
-						screenshader.shader.uTime.value[0] = new flixel.math.FlxRandom().float(-100000, 100000);
-						screenshader.shader.uampmul.value[0] = 1;
-						screenshader.Enabled = true;
-					}
 			case 'Popup':
 				var title:String = (value1);
 				var message:String = (value2);
