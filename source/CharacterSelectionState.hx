@@ -15,14 +15,14 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxSound; 
 import flixel.text.FlxText;
 
-class CharacterSelectionState extends MusicBeatState //This is not from the D&B source code, it's completely made by me (Delta). This also means I can use this code for other mods.
+class CharacterSelectionState extends MusicBeatState //This is not from the D&B source code, it's completely made by me (Delta). This also means I can use this code for other mods. 
+                                                    // your code is so bad please bro- epik
 {
 	public var characterData:Array<Dynamic> = [
         [[["Boyfriend", 'bf'], ["Pixel Boyfriend", 'bf-pixel']], [1.0, 1.0, 1.0, 1.0]], 
         [[["Bambi", 'bambi'], ["Bambi (Angry)", 'mewhennopizzarolls'], ["Bambi (Overthink)", 'bambioverthink'], ["Bambi (Mad)", 'mareloangry'], ["Bambi (God)", 'kalmpokebam'],  ["Bambi (Old)", 'bambiold'], ["Epitome", 'epitomeMan']], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]],
         [[["Expunged", '3dbambi'], ["Expunged (Unfair)", 'unfairbambi'], ["Expunged (Opposition)", 'oppositionexpunged'], ["Expunged (Thearchy)", 'thearchyexpunged'], ["Expunged (Phono)", 'phonophobiaexpunged'], ["Expunged (Green)", 'newgreen'], ["Expunged (Theoretical)", 'TheorExpunged']], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]],
         [[["HELLBREAKER", 'hellbreaker']], [1.0, 1.0]],
-        [[["Opposiiton X", 'oppositionx'], ["Opposiiton X (Faker)", 'faker']], [1.0, 1.0, 1.0, 1.0]],
         [[["Potent Bambi", 'potentbambi'], ["Potent Bambi (Potent 2)", 'potentbambismilebitch']], [1.0, 1.0, 1.0, 1.0]],
         [[["Samber", 'samber'], ["Samber (Mac Party)", 'sambermacparty'], ], [1.0, 1.0, 1.0, 1.0]],
         [[["Saper", 'Saper']], [1.0, 1.0]],
@@ -358,8 +358,6 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
                     characterSprite.screenCenter(XY);
                      characterSprite.scale.y = 1;
                     characterSprite.scale.x = 1;
-                case 'oppositionx' | 'faker':
-                    characterSprite.screenCenter(XY);
                 case 'potentbambi' | 'potentbambismilebitch':
                     characterSprite.screenCenter(XY);
                 case 'samber' | 'sambermacparty':
