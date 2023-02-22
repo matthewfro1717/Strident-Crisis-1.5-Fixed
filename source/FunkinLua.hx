@@ -287,15 +287,24 @@ class FunkinLua {
 
 
 		// gay ass tweens
-		Lua_helper.add_callback(lua, "doTweenX", function(tag:String, vars:String, value:Dynamic, duration:Float, ease:String) {
+		Lua_helper.add_callback(lua, "doTweenX", function(tag:String, vars:String, value:Dynamic, duration:Float, ease:String, loop:Bool = true) {
 			var penisExam:Dynamic = tweenShit(tag, vars);
 			if(penisExam != null) {
-				lePlayState.modchartTweens.set(tag, FlxTween.tween(penisExam, {x: value}, duration, {ease: getFlxEaseByString(ease),
-					onComplete: function(twn:FlxTween) {
-						lePlayState.callOnLuas('onTweenCompleted', [tag]);
-						lePlayState.modchartTweens.remove(tag);
-					}
-				}));
+				if (loop) {
+					lePlayState.modchartTweens.set(tag, FlxTween.tween(penisExam, {x: value}, duration, {type: FlxTweenType.LOOPING, ease: getFlxEaseByString(ease),
+						onComplete: function(twn:FlxTween) {
+							lePlayState.callOnLuas('onTweenCompleted', [tag]);
+							lePlayState.modchartTweens.remove(tag);
+						}
+					}));
+				} else {
+					lePlayState.modchartTweens.set(tag, FlxTween.tween(penisExam, {x: value}, duration, {ease: getFlxEaseByString(ease),
+						onComplete: function(twn:FlxTween) {
+							lePlayState.callOnLuas('onTweenCompleted', [tag]);
+							lePlayState.modchartTweens.remove(tag);
+						}
+					}));
+				}
 			} else {
 				luaTrace('Couldnt find object: ' + vars);
 			}
@@ -894,6 +903,24 @@ class FunkinLua {
 			var poop:FlxSprite = Reflect.getProperty(lePlayState, obj);
 			if(poop != null) {
 				poop.scale.set(x, y);
+				poop.updateHitbox();
+				return;
+			}
+			luaTrace('Couldnt find object: ' + obj);
+		});
+		Lua_helper.add_callback(lua, "multiplyScale", function(obj:String, x:Float, y:Float) {
+			if(lePlayState.modchartSprites.exists(obj)) {
+				var shit:ModchartSprite = lePlayState.modchartSprites.get(obj);
+				shit.setGraphicSize(Std.int(shit.width * x));
+				shit.setGraphicSize(Std.int(shit.height * y));
+				shit.updateHitbox();
+				return;
+			}
+
+			var poop:FlxSprite = Reflect.getProperty(lePlayState, obj);
+			if(poop != null) {
+				poop.setGraphicSize(Std.int(poop.width * x));
+				poop.setGraphicSize(Std.int(poop.height * y));
 				poop.updateHitbox();
 				return;
 			}

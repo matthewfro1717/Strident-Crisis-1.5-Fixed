@@ -173,6 +173,15 @@ class EditorLua {
 				return;
 			}
 		});
+		Lua_helper.add_callback(lua, "multiplyScale", function(obj:String, x:Float, y:Float) {
+			var poop:FlxSprite = Reflect.getProperty(lePlayState, obj);
+			if(poop != null) {
+				poop.setGraphicSize(Std.int(poop.width * x));
+				poop.setGraphicSize(Std.int(poop.height * y));
+				poop.updateHitbox();
+				return;
+			}
+		});
 		Lua_helper.add_callback(lua, "updateHitbox", function(obj:String) {
 			var poop:FlxSprite = Reflect.getProperty(lePlayState, obj);
 			if(poop != null) {
