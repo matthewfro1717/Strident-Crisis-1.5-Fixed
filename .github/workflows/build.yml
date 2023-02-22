@@ -78,12 +78,12 @@ jobs:
           haxelib install hxcpp > nul
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --always set flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel-addons
+          haxelib --always set flixel-addons 2.11.0
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec
@@ -120,12 +120,12 @@ jobs:
           haxelib install hxcpp > /dev/null
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --always set flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel-addons
+          haxelib --always set flixel-addons 2.11.0
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hxCodec
