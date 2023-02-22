@@ -83,7 +83,7 @@ class CoolUtil
 	public static function browserLoad(site:String) {
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [site]);
-		#if mac
+		#elseif mac
 		Sys.command('open', [site]);
 		#else
 		FlxG.openURL(site);
