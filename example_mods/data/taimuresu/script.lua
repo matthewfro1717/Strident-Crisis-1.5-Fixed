@@ -15,9 +15,11 @@ local doFade = true
 
 function opponentNoteHit(id, direction, noteType, isSustainNote)
 	windowX = getPropertyFromClass('openfl.Lib', 'application.window.x')
-  windowY = getPropertyFromClass('openfl.Lib', 'application.window.y')
-  setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.random(-25,25))
-  setPropertyFromClass('openfl.Lib','application.window.y',windowY + math.random(-10,10))
+  	windowY = getPropertyFromClass('openfl.Lib', 'application.window.y')
+  	if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
+  		setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.random(-25,25))
+  		setPropertyFromClass('openfl.Lib','application.window.y',windowY + math.random(-10,10))
+	end
 
 	cameraShake(game, 0.015, 0.2)
 	cameraSetTarget('dad')
@@ -110,10 +112,12 @@ function onUpdate()
 	
 	if windowthingy == true then
 	local currentBeat = (songPos/1000)*(bpm/600)
-	setPropertyFromClass('openfl.Lib','application.window.y',windowY + math.tan(-2,10,10) + math.tan(currentBeat*2)*90+ (math.sin(currentBeat)*-100))
-	setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.sin(-20,10,5,-10) + math.sin(currentBeat*2)*300 + (math.tan(currentBeat)*-200) + math.sin(currentBeat*2)*100+ (math.sin(currentBeat)*-80))
-    setPropertyFromClass('openfl.Lib','application.window.width',(introzoom*2) + (math.sin(currentBeat)*200))
-    setPropertyFromClass('openfl.Lib','application.window.height',introzoom + (math.sin(currentBeat)*100))
+	if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
+		setPropertyFromClass('openfl.Lib','application.window.y',windowY + math.tan(-2,10,10) + math.tan(currentBeat*2)*90+ (math.sin(currentBeat)*-100))
+		setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.sin(-20,10,5,-10) + math.sin(currentBeat*2)*300 + (math.tan(currentBeat)*-200) + math.sin(currentBeat*2)*100+ (math.sin(currentBeat)*-80))
+    	setPropertyFromClass('openfl.Lib','application.window.width',(introzoom*2) + (math.sin(currentBeat)*200))
+    	setPropertyFromClass('openfl.Lib','application.window.height',introzoom + (math.sin(currentBeat)*100))
+	end
 end
 end
 

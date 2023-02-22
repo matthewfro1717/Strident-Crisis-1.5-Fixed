@@ -737,7 +737,6 @@ class FunkinLua {
 				default: lePlayState.boyfriend.dance();
 			}
 		});
-
 		Lua_helper.add_callback(lua, "makeLuaSprite", function(tag:String, image:String, x:Float, y:Float) {
 			tag = tag.replace('.', '');
 			resetSpriteTag(tag);
