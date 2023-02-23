@@ -327,8 +327,10 @@ function onUpdate(elapsed)
   noteTweenX('defaultPlayerStrumX1', 5, defaultPlayerStrumX1 + modchartX2, 0.001)
   noteTweenX('defaultPlayerStrumX2', 6, defaultPlayerStrumX2 + modchartX3, 0.001)
   noteTweenX('defaultPlayerStrumX3', 7, defaultPlayerStrumX3 + modchartX4, 0.001)
+  if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
   setPropertyFromClass('openfl.Lib','application.window.x',math.fmod(windowX1,2000) - 1000 + math.random((shakevar*-1),shakevar))
   setPropertyFromClass('openfl.Lib','application.window.y',math.fmod(windowY1,2000) - 1000 + math.random((shakevar*-1),shakevar))
+  end
 end
 
 function opponentNoteHit(id, direction, noteType, isSustainNote)

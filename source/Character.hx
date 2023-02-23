@@ -74,7 +74,7 @@ class Character extends FlxSprite
 	public var alreadyLoaded:Bool = true; //Used by "Change Character" event
 
 	public static var DEFAULT_CHARACTER:String = 'bf'; //In case a character is missing, it will use BF on its place
-	public function new(x:Float, y:Float, ?character:String = 'bf', ?isPlayer:Bool = false)
+	public function new(x:Float, y:Float, ?character:String = 'bf', ?isPlayer:Bool = false, ?useOffsets:Bool = true)
 	{
 		super(x, y);
 
@@ -129,7 +129,11 @@ class Character extends FlxSprite
 					updateHitbox();
 				}
 
+				if (useOffsets) {
 				positionArray = json.position;
+				} else {
+				positionArray = [0, 350];
+				}
 				cameraPosition = json.camera_position;
 
 				healthIcon = json.healthicon;
@@ -161,7 +165,11 @@ class Character extends FlxSprite
 						}
 
 						if(anim.offsets != null && anim.offsets.length > 1) {
+							if (useOffsets) {
 							addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
+							} else {
+								addOffset(anim.anim, -5, 0);
+							}
 						}
 					}
 				} else {

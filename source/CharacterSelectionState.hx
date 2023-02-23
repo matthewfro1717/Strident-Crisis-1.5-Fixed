@@ -3,6 +3,12 @@ package;
 #if desktop
 import Discord.DiscordClient;
 #end
+#if sys
+import sys.io.File;
+import sys.FileSystem;
+#end
+import haxe.Json;
+import haxe.format.JsonParser;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -15,37 +21,11 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxSound; 
 import flixel.text.FlxText;
 
-class CharacterSelectionState extends MusicBeatState //This is not from the D&B source code, it's completely made by me (Delta). This also means I can use this code for other mods. 
-                                                    // your code is so bad please bro- epik
-{
-	public var characterData:Array<Dynamic> = [
-        [[["Boyfriend", 'bf'], ["Pixel Boyfriend", 'bf-pixel']], [1.0, 1.0, 1.0, 1.0]], 
-        [[["Bambi", 'bambi'], ["Bambi (Angry)", 'mewhennopizzarolls'], ["Bambi (Overthink)", 'bambioverthink'], ["Bambi (Mad)", 'mareloangry'], ["Bambi (God)", 'kalmpokebam'],  ["Bambi (Old)", 'bambiold'], ["Epitome", 'epitomeMan']], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]],
-        [[["Expunged", '3dbambi'], ["Expunged (Unfair)", 'unfairbambi'], ["Expunged (Opposition)", 'oppositionexpunged'], ["Expunged (Thearchy)", 'thearchyexpunged'], ["Expunged (Phono)", 'phonophobiaexpunged'], ["Expunged (Green)", 'newgreen'], ["Expunged (Theoretical)", 'TheorExpunged']], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]],
-        [[["HELLBREAKER", 'hellbreaker']], [1.0, 1.0]],
-        [[["Potent Bambi", 'potentbambi'], ["Potent Bambi (Potent 2)", 'potentbambismilebitch']], [1.0, 1.0, 1.0, 1.0]],
-        [[["Samber", 'samber'], ["Samber (Mac Party)", 'sambermacparty'], ], [1.0, 1.0, 1.0, 1.0]],
-        [[["Saper", 'Saper']], [1.0, 1.0]],
-        [[["Conbi", 'conbi']], [1.0, 1.0]],
-        [[["Bamb", 'Bamb']], [1.0, 1.0]],
-        [[["degnupxE", 'degnupxe']], [1.0, 1.0]],
-        [[["Bumbo", 'bumbo']], [1.0, 1.0]],
-        [[["Idiot", 'idiot']], [1.0, 1.0]],
-        [[["Seven", '3dseven']], [1.0, 1.0]],
-        [[["Orbi", 'Orbi']], [1.0, 1.0]],
-        [[["Linbi", 'linbi']], [1.0, 1.0]],
-        [[["Dortas", 'dortas']], [1.0, 1.0]],
-        [[["Bambice", 'bambice']], [1.0, 1.0]],
-        [[["Bambinton", 'bambinton']], [1.0, 1.0]],
-        [[["Carl", 'carl']], [1.0, 1.0]],
-        [[["Banbi", 'banbi'], ["Banbi (Origin)", 'Hjoim']], [1.0, 1.0, 1.0, 1.0]],
-        [[["GOD", 'god']], [1.0, 1.0]],
-        [[["El Mati", 'descarga']], [1.0, 1.0]],
-        [[["Gary", 'Gary']], [1.0, 1.0]],
-        [[["Nampi", 'nampi']], [1.0, 1.0]],
-        [[["Benson", 'Benson']], [1.0, 1.0]],
-        [[["Nimbi", 'nimbi']], [1.0, 1.0]],
-    ];
+using StringTools;
+
+class CharacterSelectionState extends MusicBeatState {
+
+	public var characterData:Array<Dynamic> = [];
     var characterSprite:Boyfriend;
     var characterFile:String = 'bf';
 
@@ -65,6 +45,29 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
 
     override function create() 
     {
+        var rawJson = null;
+		
+		#if MODS_ALLOWED
+		var moddyFile:String = Paths.modsJson('playablecharacters');
+		if(FileSystem.exists(moddyFile)) {
+            #if sys
+			rawJson = File.getContent(moddyFile).trim();
+            #else
+            rawJson = Assets.getText(moddyFile).trim();
+            #end
+		}
+		#end
+
+		if(rawJson == null) {
+			#if sys
+			rawJson = File.getContent(Paths.json('playablecharacters')).trim();
+			#else
+			rawJson = Assets.getText(Paths.json('playablecharacters')).trim();
+			#end
+		}
+
+        characterData = cast Json.parse(rawJson);
+
         FlxG.mouse.visible = true;
         FlxG.mouse.enabled = true;
         FlxG.sound.music.stop();
@@ -328,83 +331,12 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
     function reloadCharacter()
         {
             characterSprite.destroy();
-            characterSprite = new Boyfriend(0, 0, characterFile);
+            characterSprite = new Boyfriend(0, 0, characterFile, false);
             add(characterSprite);
             characterSprite.dance();
-
-            switch(characterFile)
-            {
-                case 'bf' | 'bf-pixel':
-                    characterSprite.screenCenter(XY);
-                case 'bambi' | 'mewhennopizzarolls' |'bambioverthink' | 'mareloangry' | 'kalmpokebam' | 'bambiold' | 'epitomeMan':
-                    characterSprite.screenCenter(XY);
-                case '3dbambi' | 'unfairbambi':
-                     characterSprite.screenCenter(XY);
-                case 'oppositionexpunged':
-                   characterSprite.screenCenter(XY);
-                    characterSprite.scale.y = 1;
-                    characterSprite.scale.x = 1;
-                case 'thearchyexpunged' | 'phonophobiaexpunged':
-                    characterSprite.screenCenter(XY);
-                    characterSprite.scale.y = 1;
-                    characterSprite.scale.x = 1;
-                case 'newgreen':
-                    characterSprite.screenCenter(XY);
-                     characterSprite.scale.y = 1;
-                    characterSprite.scale.x = 1;
-                case 'TheorExpunged':
-                    characterSprite.screenCenter(XY);
-                case 'hellbreaker':
-                    characterSprite.screenCenter(XY);
-                     characterSprite.scale.y = 1;
-                    characterSprite.scale.x = 1;
-                case 'potentbambi' | 'potentbambismilebitch':
-                    characterSprite.screenCenter(XY);
-                case 'samber' | 'sambermacparty':
-                    characterSprite.screenCenter(XY);
-                case 'Saper':
-                    characterSprite.screenCenter(XY);
-                case 'conbi':
-                    characterSprite.screenCenter(XY);
-                case 'Bamb':
-                    characterSprite.screenCenter(XY);
-                case 'degnupxe':
-                    characterSprite.screenCenter(XY);
-                case 'bumbo':
-                    characterSprite.screenCenter(XY);   
-                case 'idiot':
-                    characterSprite.screenCenter(XY);   
-                case '3dseven':
-                    characterSprite.screenCenter(XY); 
-                case 'Orbi':
-                    characterSprite.screenCenter(XY);     
-                case 'linbi':
-                    characterSprite.screenCenter(XY);        
-                case 'dortas':
-                    characterSprite.screenCenter(XY);
-                case 'bambice':
-                    characterSprite.screenCenter(XY);
-                case 'bambinton':
-                    characterSprite.screenCenter(XY);
-                case 'carl':
-                    characterSprite.screenCenter(XY);
-                case 'banbi' | 'Hjoim':
-                    characterSprite.screenCenter(XY);
-                case 'god':
-                    characterSprite.screenCenter(XY);
-                    characterSprite.scale.y = 1;
-                    characterSprite.scale.x = 1;
-                case 'descarga':
-                    characterSprite.screenCenter(XY);
-                case 'Gary':
-                    characterSprite.screenCenter(XY);  
-                case 'nampi':
-                    characterSprite.screenCenter(XY);  
-                case 'Benson':
-                    characterSprite.screenCenter(XY);
-                case 'nimbi':
-                    characterSprite.screenCenter(XY);
-            }
+            characterSprite.scale.x = characterData[curSelected][1][curSelectedForm][0];
+            characterSprite.scale.y = characterData[curSelected][1][curSelectedForm][1];
+            characterSprite.screenCenter(XY);
         }
     function acceptCharacter() 
     {

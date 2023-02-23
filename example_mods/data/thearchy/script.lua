@@ -239,8 +239,10 @@ end
 function windowShake()
   windowX = getPropertyFromClass('openfl.Lib', 'application.window.x')
   windowY = getPropertyFromClass('openfl.Lib', 'application.window.y')
+  if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
   setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.random(-5,5))
   setPropertyFromClass('openfl.Lib','application.window.y',windowY + math.random(-5,5))
+  end
 end
 
 function onDestroy()

@@ -2,14 +2,18 @@ local lmaowindow = true;
 local windowX = 200;
 
 function windowLoop(elapsed)
+  if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
 	setPropertyFromClass("openfl.Lib", "application.window.x", defaultWindowPos[1] + WinmovementAmount * math.sin(((getSongPosition() / 1000)*(bpm/100) * Windowspeed) * math.pi))
-	setPropertyFromClass("flixel.FlxG", "fullscreen", false)
+	end
+  setPropertyFromClass("flixel.FlxG", "fullscreen", false)
 end
 
 function onUpdate(elapsed)
   if lmaowindow == true then
     local currentBeat = (songPos/1000)*(bpm/314)
+    if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
     setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.sin(-5,-5) + math.sin(currentBeat*2)*400 + (math.sin(currentBeat)*-400))
+    end
   end
 end
 

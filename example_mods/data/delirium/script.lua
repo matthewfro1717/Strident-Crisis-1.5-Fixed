@@ -47,8 +47,10 @@ function onUpdate(elapsed)
       doTweenAngle("cameraA", "camHUD", 180+math.floor((curStep/128)+var1234-5)*360, 1.5, "expoOut")
      end
     local currentBeat = (songPos/1000)*(bpm/314)
+    if(getPropertyFromClass('ClientPrefs', 'windowMove')) then
     setPropertyFromClass('openfl.Lib','application.window.y',windowY + (math.sin(currentBeat)*-50) + math.tan(currentBeat)*50)
     setPropertyFromClass('openfl.Lib','application.window.x',windowX + math.random(-5,5) + math.sin(currentBeat*2)*100 + (math.sin(currentBeat)*-100))
+    end
     setPropertyFromClass('openfl.Lib','application.window.width',(introzoom*2) + (math.sin(currentBeat)*200))
     setPropertyFromClass('openfl.Lib','application.window.height',introzoom + (math.sin(currentBeat)*100))
   end
