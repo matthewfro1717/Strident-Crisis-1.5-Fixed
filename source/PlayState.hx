@@ -3645,25 +3645,27 @@ Lib.application.window.resize(width, height);*/
 		RecalculateRating();
 
 		var animToPlay:String = '';
-		switch (Math.abs(daNote.noteData) % 4)
-		{
-			case 0:
-				animToPlay = 'singLEFTmiss';
-			case 1:
-				animToPlay = 'singDOWNmiss';
-			case 2:
-				animToPlay = 'singUPmiss';
-			case 3:
-				animToPlay = 'singRIGHTmiss';
-		}
+		if (boyfriend.animation.getByName('singLEFTmiss') != null && boyfriend.animation.getByName('singDOWNmiss') != null && boyfriend.animation.getByName('singUPmiss') != null && boyfriend.animation.getByName('singRIGHTmiss') != null) {
+			switch (Math.abs(daNote.noteData) % 4)
+			{
+				case 0:
+					animToPlay = 'singLEFTmiss';
+				case 1:
+					animToPlay = 'singDOWNmiss';
+				case 2:
+					animToPlay = 'singUPmiss';
+				case 3:
+					animToPlay = 'singRIGHTmiss';
+			}
 
-		if(daNote.noteType == 'GF Sing') {
-			gf.playAnim(animToPlay, true);
-		} else {
-			var daAlt = '';
-			if(daNote.noteType == 'Alt Animation') daAlt = '-alt';
+			if(daNote.noteType == 'GF Sing') {
+				gf.playAnim(animToPlay, true);
+			} else {
+				var daAlt = '';
+				if(daNote.noteType == 'Alt Animation') daAlt = '-alt';
 
-			boyfriend.playAnim(animToPlay + daAlt, true);
+				boyfriend.playAnim(animToPlay + daAlt, true);
+			}
 		}
 		callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);
 
@@ -3709,6 +3711,7 @@ Lib.application.window.resize(width, height);*/
 				boyfriend.stunned = false;
 			});*/
 
+			if (boyfriend.animation.getByName('singLEFTmiss') != null && boyfriend.animation.getByName('singDOWNmiss') != null && boyfriend.animation.getByName('singUPmiss') != null && boyfriend.animation.getByName('singRIGHTmiss') != null) {
 			switch (direction)
 			{
 				case 0:
@@ -3719,6 +3722,7 @@ Lib.application.window.resize(width, height);*/
 					boyfriend.playAnim('singUPmiss', true);
 				case 3:
 					boyfriend.playAnim('singRIGHTmiss', true);
+			}
 			}
 			vocals.volume = 0;
 		}
