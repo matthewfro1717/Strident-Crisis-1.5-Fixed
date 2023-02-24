@@ -69,7 +69,6 @@ class CreditsState extends MusicBeatState
 		['ToxicFlame',			'toxic',		'Mania Charter',				'',		0xFFFFFF00], //yellow
 		['New Real',			'idk',		'Artist',		'https://www.youtube.com/channel/UCquhSEd3hu5Ssp3n_fpiyEQ',	    0xFF808080], //grey
 		['GoddessAwe',			'idk',		'Composer',				'https://www.youtube.com/channel/UCm_J_m6_tbNKHwlV1YBH7cw',		0xFF00ffff], //cyan
-		['Requierem Memes (Doom)',			'idk',		'Director, Artist And Made Benoit/Opposition X',		'https://www.youtube.com/channel/UC9HZTyeG2VlkUZZHmJ36qTw',		0xFF808080], //grey
 		['Iplux',			'idk',		'Composer',				'https://www.youtube.com/channel/UC7FktV-n-bLIbmuktxPt6nA',		0xFF329932], //green
 		['LongestSoloEver',			'idk',		'Composer',		'https://www.youtube.com/c/longestsoloever',		0xFFFF0000], //red
 		['Novak_M',			'novak',		'Artist',				'https://www.youtube.com/channel/UCTSJpoLC_edCJV4F8vEyKsQ',		0xFF00ffff], //cyan

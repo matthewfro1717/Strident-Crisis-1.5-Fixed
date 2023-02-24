@@ -404,7 +404,7 @@ class FreeplayState extends MusicBeatState
 
 
 		diffText = new FlxSprite(FlxG.width * 0.7, 400);
-		diffText.loadGraphic(Paths.image(''));
+		diffText.loadGraphic(Paths.image('menudifficulties/crisisfreeplay'));
 		add(diffText);
 		diffText.scale.x /= 1.9;
 		diffText.scale.y /= 1.9;

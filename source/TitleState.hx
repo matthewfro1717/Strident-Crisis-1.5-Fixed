@@ -451,7 +451,7 @@ class TitleState extends MusicBeatState
 		super.beatHit();
 
 		if(logoBl != null) 
-			logoBl.animation.play('bump');
+			/*logoBl.animation.play('bump');*/
 
 		gfDance.animation.play('GF Dancing Beat');
 		
