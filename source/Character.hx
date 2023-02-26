@@ -74,7 +74,7 @@ class Character extends FlxSprite
 	public var alreadyLoaded:Bool = true; //Used by "Change Character" event
 
 	public static var DEFAULT_CHARACTER:String = 'bf'; //In case a character is missing, it will use BF on its place
-	public function new(x:Float, y:Float, ?character:String = 'bf', ?isPlayer:Bool = false, ?useOffsets:Bool = true)
+	public function new(x:Float, y:Float, ?character:String = 'bf', ?isPlayer:Bool = false, ?useOffsets:Bool = true, ?customoffsetArray:Array<Dynamic>)
 	{
 		super(x, y);
 
@@ -166,9 +166,9 @@ class Character extends FlxSprite
 
 						if(anim.offsets != null && anim.offsets.length > 1) {
 							if (useOffsets) {
-							addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
+								addOffset(anim.anim, anim.offsets[0], anim.offsets[1]);
 							} else {
-								addOffset(anim.anim, -5, 0);
+								addOffset(anim.anim, customoffsetArray[0], customoffsetArray[1]);
 							}
 						}
 					}

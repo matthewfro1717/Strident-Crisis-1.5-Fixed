@@ -690,7 +690,7 @@ class PlayState extends MusicBeatState
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
 
-		boyfriend = new Boyfriend(0, 0, SONG.player1);
+		boyfriend = new Boyfriend(0, 0, SONG.player1, true);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		
@@ -898,7 +898,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		judgementCounter = new FlxText(20, 0, 0, "", 20);
+		/*judgementCounter = new FlxText(20, 0, 0, "", 20);
 		judgementCounter.setFormat(Paths.font("comicsanslol.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		judgementCounter.borderSize = 2;
 		judgementCounter.borderQuality = 2;
@@ -906,7 +906,7 @@ class PlayState extends MusicBeatState
 		judgementCounter.size = 22;
 		judgementCounter.screenCenter(Y);
 		judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nPhone Breaks: ${songMisses}\n';
-	    add(judgementCounter);
+	    add(judgementCounter);*/
 
 		if(SONG.credit != null) {
 			watermarkTxt = new FlxText(10, FlxG.height - 28, 0, 'By ' + SONG.credit + ' - ' + SONG.song + " - " + CoolUtil.difficultyString() + " - Strident Crisis V1.5", 74);
@@ -1002,7 +1002,7 @@ class PlayState extends MusicBeatState
 			{
 				watermarkTxt.alpha = 0;
 				screwYouTxt.alpha = 0;
-				judgementCounter.alpha = 0;
+				/*judgementCounter.alpha = 0;*/
 			}
 
 		
@@ -1037,7 +1037,7 @@ class PlayState extends MusicBeatState
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
-		judgementCounter.cameras = [camHUD];
+		/*judgementCounter.cameras = [camHUD];*/
 		watermarkTxt.cameras = [camHUD];
 		comboCounterTxt.cameras = [camHUD];
 		totalNotesTxt.cameras = [camHUD];
@@ -1202,7 +1202,7 @@ class PlayState extends MusicBeatState
 		switch(type) {
 			case 0:
 				if(!boyfriendMap.exists(newCharacter)) {
-					var newBoyfriend:Boyfriend = new Boyfriend(0, 0, newCharacter);
+					var newBoyfriend:Boyfriend = new Boyfriend(0, 0, newCharacter, true);
 					boyfriendMap.set(newCharacter, newBoyfriend);
 					boyfriendGroup.add(newBoyfriend);
 					startCharacterPos(newBoyfriend);
@@ -4308,7 +4308,7 @@ Lib.application.window.resize(width, height);*/
 			setOnLuas('rating', ratingPercent);
 			setOnLuas('ratingName', ratingString);
 			setOnLuas('ratingFC', ratingFC);
-			judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nPhone Breaks: ${songMisses}\n';
+			/*judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nPhone Breaks: ${songMisses}\n';*/
 		}
 	}
 

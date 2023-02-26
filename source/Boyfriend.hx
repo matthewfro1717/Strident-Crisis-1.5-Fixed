@@ -11,9 +11,9 @@ class Boyfriend extends Character
 {
 	public var startedDeath:Bool = false;
 
-	public function new(x:Float, y:Float, ?char:String = 'bf', ?useOffsets:Bool = true)
+	public function new(x:Float, y:Float, ?char:String = 'bf', ?useOffsets:Bool = true, ?offsetArray:Array<Dynamic>)
 	{
-		super(x, y, char, true, useOffsets);
+		super(x, y, char, true, useOffsets, offsetArray);
 	}
 
 	override function update(elapsed:Float)

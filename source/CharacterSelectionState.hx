@@ -132,7 +132,7 @@ class CharacterSelectionState extends MusicBeatState {
     function spawnSelection()
         {
             selectionStart = true;
-            characterSprite = new Boyfriend(0, 0, "bf");
+            characterSprite = new Boyfriend(0, 0, "bf", false, [-5, 0]);
             add(characterSprite);
             characterSprite.dance();
             characterSprite.screenCenter(XY);
@@ -278,6 +278,12 @@ class CharacterSelectionState extends MusicBeatState {
                                 }
                         }
                 }
+                if (controls.BACK)
+                    {
+                        FlxG.sound.music.stop();
+                        MusicBeatState.switchState(new FreeplayState());
+                        FlxG.sound.playMusic(Paths.music('freakyMenu'));
+                    }
         super.update(elapsed);
     }
 
@@ -331,7 +337,11 @@ class CharacterSelectionState extends MusicBeatState {
     function reloadCharacter()
         {
             characterSprite.destroy();
-            characterSprite = new Boyfriend(0, 0, characterFile, false);
+            if (characterData[curSelected][1][curSelectedForm][2] is Array) {
+                characterSprite = new Boyfriend(0, 0, characterFile, false, characterData[curSelected][1][curSelectedForm][2]);
+            } else {
+                characterSprite = new Boyfriend(0, 0, characterFile, characterData[curSelected][1][curSelectedForm][2], [-5, 0]);
+            }
             add(characterSprite);
             characterSprite.dance();
             characterSprite.scale.x = characterData[curSelected][1][curSelectedForm][0];
