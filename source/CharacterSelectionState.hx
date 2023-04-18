@@ -25,7 +25,36 @@ using StringTools;
 
 class CharacterSelectionState extends MusicBeatState {
 
-	public var characterData:Array<Dynamic> = [];
+	public var characterData:Array<Dynamic> = [
+        [[["Boyfriend", 'bf'], ["Pixel Boyfriend", 'bf-pixel']], [1.0, 1.0, 1.0, 1.0]], 
+        [[["Gold Bambi", 'gold-bambi']], [1.0, 1.0, 1.0, 1.0]], 
+        [[["Bambi", 'bambi'], ["Bambi (Angry)", 'mewhennopizzarolls'], ["Bambi (Overthink)", 'bambioverthink'], ["Bambi (Mad)", 'mareloangry'], ["Bambi (God)", 'kalmpokebam'],  ["Bambi (Old)", 'bambiold'], ["Epitome", 'epitomeMan']], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]],
+        [[["Expunged", '3dbambi'], ["Expunged (Unfair)", 'unfairbambi'], ["Expunged (Opposition)", 'oppositionexpunged'], ["Expunged (Thearchy)", 'thearchyexpunged'], ["Expunged (Phono)", 'phonophobiaexpunged'], ["Expunged (Green)", 'newgreen'], ["Expunged (Theoretical)", 'TheorExpunged']], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]],
+        [[["HELLBREAKER", 'hellbreaker']], [1.0, 1.0]],
+        [[["Opposiiton X", 'oppositionx'], ["Opposiiton X (Faker)", 'faker']], [1.0, 1.0, 1.0, 1.0]],
+        [[["Potent Bambi", 'potentbambi'], ["Potent Bambi (Potent 2)", 'potentbambismilebitch']], [1.0, 1.0, 1.0, 1.0]],
+        [[["Samber", 'samber'], ["Samber (Mac Party)", 'sambermacparty'], ], [1.0, 1.0, 1.0, 1.0]],
+        [[["Saper", 'Saper']], [1.0, 1.0]],
+        [[["Conbi", 'conbi']], [1.0, 1.0]],
+        [[["Bamb", 'Bamb']], [1.0, 1.0]],
+        [[["degnupxE", 'degnupxe']], [1.0, 1.0]],
+        [[["Bumbo", 'bumbo']], [1.0, 1.0]],
+        [[["Idiot", 'idiot']], [1.0, 1.0]],
+        [[["Seven", '3dseven']], [1.0, 1.0]],
+        [[["Orbi", 'Orbi']], [1.0, 1.0]],
+        [[["Linbi", 'linbi']], [1.0, 1.0]],
+        [[["Dortas", 'dortas']], [1.0, 1.0]],
+        [[["Bambice", 'bambice']], [1.0, 1.0]],
+        [[["Bambinton", 'bambinton']], [1.0, 1.0]],
+        [[["Carl", 'carl']], [1.0, 1.0]],
+        [[["Banbi", 'banbi'], ["Banbi (Origin)", 'Hjoim']], [1.0, 1.0, 1.0, 1.0]],
+        [[["GOD", 'god']], [1.0, 1.0]],
+        [[["El Mati", 'descarga']], [1.0, 1.0]],
+        [[["Gary", 'Gary']], [1.0, 1.0]],
+        [[["Nampi", 'nampi']], [1.0, 1.0]],
+        [[["Benson", 'Benson']], [1.0, 1.0]],
+        [[["Nimbi", 'nimbi']], [1.0, 1.0]],
+    ];
     var characterSprite:Boyfriend;
     var characterFile:String = 'bf';
 
