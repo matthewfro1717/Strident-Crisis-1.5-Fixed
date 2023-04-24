@@ -1007,7 +1007,7 @@ class PlayState extends MusicBeatState
 
 		
 		
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "CHEATER", 32);
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("comicsanslol.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
