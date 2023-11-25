@@ -273,7 +273,6 @@ class PlayState extends MusicBeatState
 	var screwYouTxt:FlxText;
 	var watermarkTxt:FlxText;
 	var ghostTappersOff:Bool = false;
-	var heyStopTrying:Bool = false;
 
 //	public static var animatedShaders:Map<String, DynamicShaderHandler> = new Map<String, DynamicShaderHandler>();
 
@@ -379,8 +378,6 @@ class PlayState extends MusicBeatState
 	var windowX:Int = 0;
 	var windowY:Int = 0;
 
-
-	var usedBotplayBefore:Bool = false;
 	// Lua shit
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
 	public var introSoundsSuffix:String = '';
@@ -1265,10 +1262,6 @@ class PlayState extends MusicBeatState
 			add(bg);
 
 			(new FlxVideo(fileName)).finishCallback = function() {
-				if(heyStopTrying)
-					{
-						System.exit(0);
-					}
 				remove(bg);
 				if(endingSong) {
 					endSong();
@@ -1965,15 +1958,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		
-
-		if(cpuControlled || practiceMode)
-		{
-		if(!usedBotplayBefore)
-			{
-				usedBotplayBefore = true;
-			}
-		}
 		the3DWorldEffectFlag.update(elapsed);
 		the3DWorldEffectHeatWaveHor.update(elapsed);
 		the3DWorldEffectHeatWaveVer.update(elapsed);
@@ -2041,10 +2025,11 @@ Lib.application.window.resize(width, height);*/
 		if(cpuControlled) {
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
-
+		}
 		botplayTxt.visible = cpuControlled;
 
-		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause && !heyStopTrying)
+
+		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnLuas('onPause', []);
 			if(ret != FunkinLua.Function_Stop) {
@@ -2088,7 +2073,6 @@ Lib.application.window.resize(width, height);*/
 							vocals.stop();
 							FlxG.sound.music.stop();
 							KillNotes();
-							heyStopTrying = true;
 
 							startVideo('christmas');
 							new FlxTimer().start(21.55, function(tmr:FlxTimer)
@@ -2104,7 +2088,6 @@ Lib.application.window.resize(width, height);*/
 							vocals.stop();
 							FlxG.sound.music.stop();
 							KillNotes();
-							heyStopTrying = true;
 
 							startVideo('youcheater');
 							new FlxTimer().start(5.85, function(tmr:FlxTimer)
@@ -2137,7 +2120,6 @@ Lib.application.window.resize(width, height);*/
 							vocals.pause();
 							FlxG.sound.music.pause();
 							KillNotes();
-							heyStopTrying = true;
 		
 							var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 							add(bg);
@@ -2263,7 +2245,7 @@ Lib.application.window.resize(width, height);*/
 		FlxG.watch.addQuick("stepShit", curStep);
 
 		// RESET = Quick Game Over Screen
-		if (controls.RESET && !inCutscene && !endingSong && !heyStopTrying)
+		if (controls.RESET && !inCutscene && !endingSong)
 		{
 			health = 0;
 			trace("RESET = True");
@@ -3049,23 +3031,9 @@ Lib.application.window.resize(width, height);*/
 
 	function finishSong():Void
 	{
-		if(!heyStopTrying)
-			{
-				var finishCallback:Void->Void = endSong; //In case you want to change it in a specific song.
-
-				updateTime = false;
-				FlxG.sound.music.volume = 0;
-				vocals.volume = 0;
-				vocals.pause();
-				if(ClientPrefs.noteOffset <= 0) {
-					finishCallback();
-				} else {
-					finishTimer = new FlxTimer().start(ClientPrefs.noteOffset / 1000, function(tmr:FlxTimer) {
-						finishCallback();
-					});
-				}
-			}
-		
+		finishTimer = new FlxTimer().start(ClientPrefs.noteOffset / 1000, function(tmr:FlxTimer) {
+			finishCallback();
+		});
 	}
 
 
@@ -3101,13 +3069,12 @@ Lib.application.window.resize(width, height);*/
 				FlxG.save.data.invisibleWeekUnlocked2 = true;
 				trace("unlocked the week");
 			}
-		}
-						
+		}			
 		if(storyWeek == 5)
 		{
 			{
 				FlxG.save.data.spamophobiaUnlocked = true;
-			        trace("unlocked spamophobia");
+				trace("unlocked spamophobia");
 			}
 		}
 	}
