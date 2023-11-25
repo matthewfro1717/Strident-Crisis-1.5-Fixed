@@ -195,8 +195,6 @@ class PlayState extends MusicBeatState
 	public var GF_X:Float = 400;
 	public var GF_Y:Float = 130;
 
-	var randomBotplayText:String;
-
 	var flashyflash:FlxSprite = new FlxSprite();
 	var darken:FlxSprite = new FlxSprite();
 
@@ -423,9 +421,6 @@ class PlayState extends MusicBeatState
 
 
 		wavyBGs = CoolUtil.coolTextFile(Paths.txt('wavyBackgrounds'));
-
-
-		randomBotplayText = theListBotplay[FlxG.random.int(0, theListBotplay.length - 1)];
 
 		FlxG.save.data.playingNow = false;
 
@@ -2039,30 +2034,8 @@ Lib.application.window.resize(width, height);*/
 		} else {
 			scoreTxt.text = 'Score: ' + songScore + ' | Phone Breaks: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
 		}
-		if(practiceMode)
-			{
-				scoreTxt.text = "Practice Mode";
-			}
 
-		if(!cpuControlled && ClientPrefs.randomBotplayText)
-			{
-				botplayTxt.text = theListBotplay[FlxG.random.int(0, theListBotplay.length - 1)];
-			}
-		if(cpuControlled && ClientPrefs.randomBotplayText) {
-			botplaySine += 180 * elapsed;
-			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
-			if(botplayTxt.text == "Bambi Say: GET THE FUCK OUT OF BOTPLAY" && !botplayUsed)
-				{
-					botplayUsed = true;
-					new FlxTimer().start(5, function(tmr:FlxTimer)
-						{
-							cpuControlled = false;
-							botplayUsed = false;
-						});
-				}
-		}
 		botplayTxt.visible = cpuControlled;
-
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause && !heyStopTrying)
 		{
@@ -3092,50 +3065,46 @@ Lib.application.window.resize(width, height);*/
 	var transitioning = false;
 	public function endSong():Void
 	{
-		if(!heyStopTrying)
+		if(curSong == 'Ornery' && storyDifficulty >= 1)
+		{
+			FlxG.save.data.goldenUnlocked = true;
+			trace("unlocked golden");
+		}
+		if(curSong == 'Fucked' && storyDifficulty >= 1)
+		{
+			FlxG.save.data.fuckedUnlocked = true;
+			trace("unlocked fucked");
+		}
+		if(curSong == 'Tribulation' && storyDifficulty >= 1)
+		{
+			FlxG.save.data.tribUnlocked = true;
+			trace("unlocked tribulation");
+		}
+		if(storyWeek == 3)
+		{
 			{
-				if(!usedBotplayBefore)
-					{
-						if(curSong == 'Ornery' && storyDifficulty >= 1)
-							{
-								FlxG.save.data.goldenUnlocked = true;
-								trace("unlocked golden");
-							}
-						if(curSong == 'Fucked' && storyDifficulty >= 1)
-								{
-									FlxG.save.data.fuckedUnlocked = true;
-									trace("unlocked fucked");
-								}
-						if(curSong == 'Tribulation' && storyDifficulty >= 1)
-									{
-										FlxG.save.data.tribUnlocked = true;
-										trace("unlocked tribulation");
-									}
-						if(storyWeek == 3)
-							{
-								{
-									FlxG.save.data.orneryUnlocked = true;
-									trace("unlocked ornery");
-								}
-							}
-						if(storyWeek == 4)
-							{
-								{
-									FlxG.save.data.invisibleWeekUnlocked1 = true;
-									FlxG.save.data.invisibleWeekUnlocked2 = true;
-									trace("unlocked the week");
-								}
-							}
+				FlxG.save.data.orneryUnlocked = true;
+				trace("unlocked ornery");
+			}
+		}
+		if(storyWeek == 4)
+		{
+			{
+				FlxG.save.data.invisibleWeekUnlocked1 = true;
+				FlxG.save.data.invisibleWeekUnlocked2 = true;
+				trace("unlocked the week");
+			}
+		}
 						
-						if(storyWeek == 5)
-							{
-								{
-									FlxG.save.data.spamophobiaUnlocked = true;
-									trace("unlocked spamophobia");
-								}
-							}
-					}
-				//Should kill you if you tried to cheat
+		if(storyWeek == 5)
+		{
+			{
+				FlxG.save.data.spamophobiaUnlocked = true;
+			        trace("unlocked spamophobia");
+			}
+		}
+	}
+	//Should kill you if you tried to cheat
 				if(!startingSong) {
 					notes.forEach(function(daNote:Note) {
 						if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
