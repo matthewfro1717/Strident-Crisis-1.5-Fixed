@@ -2034,6 +2034,13 @@ Lib.application.window.resize(width, height);*/
 		} else {
 			scoreTxt.text = 'Score: ' + songScore + ' | Phone Breaks: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
 		}
+		if(practiceMode)
+			{
+				scoreTxt.text = "Practice Mode";
+			}
+		if(cpuControlled) {
+			botplaySine += 180 * elapsed;
+			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 
 		botplayTxt.visible = cpuControlled;
 
